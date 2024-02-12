@@ -1,0 +1,33 @@
+﻿@model IEnumerable<SimpleCrudWithVue.Models.Project>
+
+@{
+    ViewData["Title"] = "Projects";
+}
+
+<div id="project_list">
+    <ejs-grid :data-source='projects'
+              ref="grid"
+              :page-settings="settings.pageSettings"
+              :edit-settings="settings.gridSettings.editSettings"
+               height='273px'
+              :row-selected='rowSelected'
+              :allow-paging="true"
+              :allow-sorting="true"
+              :allow-filtering="true"
+              :action-begin="onActionComplete"
+              :filter-settings="settings.filterOptions"
+              :toolbar="settings.toolbarOptions">
+        <e-columns>
+            <e-column type="string" field='name' header-text='Name' text-align='Center' width=100></e-column>
+            <e-column type="string" field='description' header-text='Description' text-align='Center' width=120></e-column>
+            <e-column type="number" field='price' header-text='Price' text-align='Center' edit-type='numericedit' width=120 format='C2' :validation-rules="ProductValueValidationRules"></e-column>
+            <e-column foreign-key-value='name' :data-source='categories' field='categoryId' header-text='Category' 
+                      :edit="categoryParams" text-align='Center' 
+                      edit-type='dropdownedit' width=120 format='C2'></e-column>
+         </e-columns>
+    </ejs-grid>
+</div>
+
+@section scripts {
+    <script src="~/js/projects.js" asp-append-version="true"></script>
+}
