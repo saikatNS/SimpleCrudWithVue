@@ -100,7 +100,7 @@ namespace SimpleCrudWithVue.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ProjectId,Name,Description,Price")] Project project)
+        public async Task<IActionResult> Edit(int id, [Bind("ProjectId,Name,Description,Price,FromDate,ToDate")] Project project)
         {
             if (id != project.ProjectId)
             {
